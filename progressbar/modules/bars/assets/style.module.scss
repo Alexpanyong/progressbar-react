@@ -1,0 +1,51 @@
+@import '~base/variables';
+
+.bar_wrap {
+  position: relative;
+  margin: pxtorem(10) pxtorem(0);
+  color: $bar_text_color;
+  border: 1px solid $outline_color;
+}
+
+.percentageFill {
+  position: absolute;
+  width: 0;
+  height: 100%;
+  background-color: $bar_percent_color;
+  -webkit-transition: width 400ms ease;
+  -moz-transition: width 400ms ease;
+  -ms-transition: width 400ms ease;
+  -o-transition: width 400ms ease;
+  transition: width 400ms ease;
+}
+
+.percentageText {
+  position: relative;
+  padding: pxtorem(10);
+  text-align: center;
+}
+
+.button_wrap {
+  display: inline-block;
+  width: pxtorem(60);
+  margin: pxtorem(10);
+  background-color: $button_bg_color;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.bar_select {
+  margin: pxtorem(10) pxtorem(0);
+  background-color: $button_bg_color;
+
+  select {
+    display: block;
+    width: 100%;
+    height: pxtorem(38);
+    padding: pxtorem(10);
+    background-color: $button_bg_color;
+    border: 1px solid $button_bg_color; 
+  }
+}

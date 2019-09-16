@@ -1,0 +1,92 @@
+{
+  "repoURL": "",
+  "env": {
+    "dev": {
+      "common": {
+        "servers": "",
+        "branch": "dev",
+        "workspace": "/tmp/shipit-builder",
+        "envConfig": "dev",
+        "keepReleases": "5"
+      },
+      "member": {
+        "path": ""
+      },
+      "admin": {
+        "path": ""
+      },
+      "website": {
+        "path": ""
+      }
+    },
+    "staging": {
+      "common": {
+        "servers": "",
+        "branch": "staging",
+        "workspace": "/tmp/shipit-builder",
+        "envConfig": "staging",
+        "keepReleases": "5",
+        "purgeINFO": {
+          "url": "",
+          "email": "",
+          "authKey": ""
+        }
+      },
+      "member": {
+        "path": ""
+      },
+      "admin": {
+        "path": ""
+      },
+      "website": {
+        "path": ""
+      }
+    },
+    "uat": {
+      "common": {
+        "servers": "",
+        "branch": "release",
+        "workspace": "/tmp/shipit-builder",
+        "envConfig": "uat",
+        "keepReleases": "5",
+        "purgeINFO": {
+          "url": "",
+          "email": "",
+          "authKey": ""
+        }
+      },
+      "member": {
+        "path": ""
+      },
+      "admin": {
+        "path": ""
+      },
+      "website": {
+        "path": ""
+      }
+    },
+    "prod": {
+      "common": {
+        "servers": "",
+        "branch": "master",
+        "workspace": "/tmp/shipit-builder",
+        "envConfig": "prod",
+        "keepReleases": "5",
+        "purgeINFO": {
+          "url": "",
+          "email": "",
+          "authKey": ""
+        }
+      },
+      "member": {
+        "path": ""
+      },
+      "admin": {
+        "path": ""
+      },
+      "website": {
+        "path": ""
+      }
+    }
+  }
+}

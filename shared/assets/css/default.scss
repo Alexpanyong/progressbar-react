@@ -1,0 +1,153 @@
+/**
+ * Google fonts
+ */
+@import '~typeface-lato/index.css';
+@import '~typeface-work-sans/index.css';
+
+/**
+  * Base SCSS variables & mixins
+  */
+@import 'base/variables.scss';
+@import 'base/breakpoints.scss';
+@import 'base/mixins.scss';
+
+*,
+*::before,
+*::after {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  font-size: $font-size-base;
+  font-family: $font-family-base;
+}
+
+h1 {
+  font-size: $font-size-h1;
+}
+h2 {
+  font-size: $font-size-h2;
+}
+h3 {
+  font-size: $font-size-h3;
+}
+h4 {
+  font-size: $font-size-h4;
+}
+h5 {
+  font-size: $font-size-h5;
+}
+h6 {
+  font-size: $font-size-h6;
+}
+
+.page_bg {
+  background-color: black;
+  min-height: 100vh;
+  background-image: $gradient_bg;
+  background-size: 100% 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.page_container {
+  padding: pxtorem(80) pxtorem(180);
+
+  &.wide {
+    padding: pxtorem(20) pxtorem(20);
+
+    @media (max-width: 1199px) {
+      padding: pxtorem(20) pxtorem(20);
+    }
+
+    @media (max-width: 599px) {
+      padding: pxtorem(20) pxtorem(20);
+    }
+  }
+
+  &.noBottomPadding {
+    padding-bottom: 0 !important;
+  }
+
+  &.smallSidePadding {
+    padding: pxtorem(80) pxtorem(50);
+  }
+
+  @media (max-width: 1199px) {
+    padding: pxtorem(80) pxtorem(80);
+  }
+
+  @media (max-width: 599px) {
+    padding: pxtorem(80) pxtorem(20);
+  }
+
+  &__header {
+    color: $text_white;
+    font-family: 'Work Sans';
+    font-weight: bold;
+    padding: pxtorem(20) 0;
+  }
+}
+
+.space {
+  padding: pxtorem(30);
+}
+
+.small-space {
+  padding: pxtorem(16);
+}
+
+.form_label {
+  color: $outline_color;
+  font-size: pxtorem(12);
+  margin-bottom: pxtorem(5);
+
+  &.disabled {
+    color: $outline_disabled_color !important;
+  }
+}
+
+.form_label_inverted {
+  color: $primary;
+  font-size: pxtorem(12);
+  margin-bottom: pxtorem(5);
+
+  &.disabled {
+    color: $outline_disabled_color !important;
+  }
+}
+
+.panel {
+  background-color: $container_bg_opac;
+  border: 1px solid $filter_border_color;
+  padding: pxtorem(50);
+  border-radius: 5px;
+
+  &.wide {
+    padding: pxtorem(20);
+  }
+}
+
+.svg_select_points_l,
+.svg_select_points_r {
+  fill: $text_white !important;
+}
+
+.main-content-wrapper {
+  background-color: $container_bg_opac;
+  padding: pxtorem(24) pxtorem(24);
+  border: 1px solid $filter_border_color;
+}
+
+div[role='tooltip'] {
+  z-index: 9999 !important;
+}
+
+.spacer {
+  color: $primary;
+  font-weight: 900;
+}
+
+@import 'utils/helpers.scss';

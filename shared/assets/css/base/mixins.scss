@@ -1,0 +1,405 @@
+/*
+ * helper function that converts rem to px
+ */
+
+@function pxtorem($px, $rem: 16) {
+  @return ($px / $rem)+0rem;
+}
+
+/*
+* helper function that number rem to px
+*/
+
+@function numtopx($px) {
+  @return ($px)+0px;
+}
+
+/**
+* CSS3 Manualpixer
+*/
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+
+@mixin text-shadow($shadow...) {
+  text-shadow: $shadow;
+}
+
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+
+@mixin background-gradient($color1, $color2) {
+  background: $color1;
+  background: -moz-linear-gradient(top, $color2 0%, $color1 100%);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, $color2),
+    color-stop(100%, $color1)
+  );
+  background: -webkit-linear-gradient(top, $color2 0%, $color1 100%);
+  background: -o-linear-gradient(top, $color2 0%, $color1 100%);
+  background: -ms-linear-gradient(top, $color2 0%, $color1 100%);
+  background: linear-gradient(to bottom, $color2 0%, $color1 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$color2, endColorstr=$color1, GradientType=0);
+}
+
+@mixin background-gradient-horizontal($color1, $color2) {
+  background: $color1;
+  background: -moz-linear-gradient(left, $color1 0%, $color2 100%);
+  background: -webkit-linear-gradient(left, $color1 0%, $color2 100%);
+  background: linear-gradient(to right, $color1 0%, $color2 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$color1, endColorstr=$color2, GradientType=1);
+}
+
+@mixin background-gradient-vertical($color1, $color2, $break) {
+  background: $color1;
+  background: -moz-linear-gradient(
+    top,
+    $color2 0%,
+    $color2 $break,
+    $color1 $break,
+    $color1 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, $color2),
+    color-stop($break, $color2),
+    color-stop($break, $color1),
+    color-stop(100%, $color1)
+  );
+  background: -webkit-linear-gradient(
+    top,
+    $color2 0%,
+    $color2 $break,
+    $color1 $break,
+    $color1 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    $color2 0%,
+    $color2 $break,
+    $color1 $break,
+    $color1 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    $color2 0%,
+    $color2 $break,
+    $color1 $break,
+    $color1 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    $color2 0%,
+    $color2 $break,
+    $color1 $break,
+    $color1 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$color2, endColorstr=$color1, GradientType=0);
+}
+
+@mixin radial-gradient($color1, $break1, $color2, $break2) {
+  background: -moz-radial-gradient(
+    $color1 $break1,
+    $color2 $break2
+  ); /* FF3.6+ */
+  background: -webkit-gradient(
+    0px,
+    center center,
+    $break2,
+    color-stop($break1, $color1),
+    color-stop($break2, $color2)
+  ); /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(
+    $color1 $break1,
+    $color2 $break2
+  ); /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(
+    $color1 $break1,
+    $color2 $break2
+  ); /* Opera 12+ */
+  background: -ms-radial-gradient($color1 $break1, $color2 $break2); /* IE10+ */
+  background: radial-gradient($color1 $break1, $color2 $break2); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$color1, endColorstr=$color2,GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+/**
+* Looping
+*/
+
+@mixin dynamic-loop($class-slug, $attribute, $prefix, $end) {
+  @for $i from 0 through $end {
+    .#{$class-slug}-#{$prefix}#{$i} {
+      #{$attribute}: #{$prefix}+ $i + px;
+    }
+  }
+}
+
+@mixin dynamic-loop-by-10($class-slug, $attribute, $end) {
+  @for $i from 1 through $end {
+    .#{$class-slug}-#{$i}0 {
+      #{$attribute}: ($i + 0px) * 10;
+    }
+  }
+}
+
+@mixin dynamic-loop-by-20($class-slug, $attribute, $end) {
+  @for $i from 2 through $end {
+    .#{$class-slug}-#{$i}0 {
+      #{$attribute}: ($i + 0px) * 10;
+    }
+  }
+}
+
+/**
+* Responsive ratio example:
+* responsive-ratio(16:9)
+*/
+
+@mixin responsive-ratio($x, $y, $pseudo: false) {
+  $padding: unquote(($y / $x) * 100 + '%');
+  @if $pseudo {
+    &:before {
+      @include pseudo($pos: relative);
+      width: 100%;
+      padding-top: $padding;
+    }
+  } @else {
+    padding-top: $padding;
+  }
+}
+
+/**
+* Pseudo includes example:
+* div::after {
+*    @include pseudo;
+* }
+*/
+
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+/**
+** Margin and padding set to zero example:
+example: top & bottom margin set to $spacing-unit
+.element {
+  @include push--ends;
+}
+example: left & right padding set to $spacing-unit--small
+.element {
+  @include soft--sides($spacing-unit--small);
+}
+**/
+
+// add/remove margins
+@mixin push--ends($spacing: $spacing-unit) {
+  margin: {
+    top: $spacing;
+    bottom: $spacing;
+  }
+}
+
+@mixin push--sides($spacing: $spacing-unit) {
+  margin: {
+    left: $spacing;
+    right: $spacing;
+  }
+}
+
+@mixin push--auto {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+
+@mixin offset--sides($spacing: $spacing-unit) {
+  margin: {
+    left: -$spacing;
+    right: -$spacing;
+  }
+}
+
+@mixin flush--ends {
+  margin: {
+    top: 0;
+    bottom: 0;
+  }
+}
+
+@mixin flush--sides {
+  margin: {
+    left: 0;
+    right: 0;
+  }
+}
+
+// add/remove paddings
+@mixin soft--ends($spacing: $spacing-unit) {
+  padding: {
+    top: $spacing;
+    bottom: $spacing;
+  }
+}
+
+@mixin soft--sides($spacing: $spacing-unit) {
+  padding: {
+    left: $spacing;
+    right: $spacing;
+  }
+}
+
+@mixin hard--ends {
+  padding: {
+    top: 0;
+    bottom: 0;
+  }
+}
+
+@mixin hard--sides {
+  padding: {
+    left: 0;
+    right: 0;
+  }
+}
+
+//placeholder
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+/**
+** Retina images example:
+.element {
+    @include retina {
+    background-image: url(../img/background@2x.png);
+  }
+}
+**/
+
+@mixin retina {
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+    only screen and (-moz-min-device-pixel-ratio: 1.5),
+    only screen and (-o-min-device-pixel-ratio: 3 / 2),
+    only screen and (min-device-pixel-ratio: 1.5),
+    only screen and (min-resolution: 1.5dppx) {
+    @content;
+  }
+}
+
+/**
+* Font weights
+*/
+
+@mixin font-by-weight($class-slug, $weight) {
+  .#{$class-slug}-#{$weight} {
+    #{$class-slug}: $weight;
+  }
+}
+
+/**
+* Bootstrap mixins overriding
+*/
+
+@mixin form-control-focus($color) {
+  &:focus {
+    border-color: $color;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}
+
+/**
+* Labels
+*/
+
+@mixin input-label-separator() {
+  display: grid;
+  grid-template-columns: auto 210px;
+  grid-column-gap: 15px;
+  > div {
+    &:nth-child(2) {
+      padding-top: 4px;
+    }
+  }
+}
+
+@mixin small-helper-message-under-input() {
+  text-align: right;
+  padding-right: 5px;
+  font-size: 9pt;
+  color: #333;
+  margin-top: -16px;
+}
+
+@mixin set-items-flexdirection-column() {
+  display: flex;
+  flex-direction: column;
+}
+
+/**
+* Font size for all view
+*/
+
+@mixin all-font-size($size, $start: 1, $diff: 1) {
+  @media (min-width: $sm) {
+    font-size: numtopx($size - ($start + $diff * 3));
+  }
+  @media (min-width: $md) {
+    font-size: numtopx($size - ($start + $diff * 2));
+  }
+  @media (min-width: $lg) {
+    font-size: numtopx($size - ($start + $diff));
+  }
+  @media (min-width: $xl) {
+    font-size: ($size + 0px);
+  }
+}
+
+@mixin all_line_hight($size, $start: 1, $diff: 1) {
+  @media (min-width: $sm) {
+    line-height: numtopx($size - ($start + $diff * 3));
+  }
+  @media (min-width: $md) {
+    line-height: numtopx($size - ($start + $diff * 2));
+  }
+  @media (min-width: $lg) {
+    line-height: numtopx($size - ($start + $diff));
+  }
+  @media (min-width: $xl) {
+    line-height: ($size + 0px);
+  }
+}

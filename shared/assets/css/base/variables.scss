@@ -1,0 +1,42 @@
+$font-family-sans-serif: 'Lato', Helvetica, Arial, sans-serif;
+$font-family-serif: 'Lato', Georgia, 'Times New Roman', Times, serif;
+$font-family-monospace: 'Lato', Helvetica, Arial, sans-serif;
+$font-family-base: $font-family-sans-serif;
+$font-family-head: $font-family-serif;
+
+$font-size-base: pxtorem(16);
+$font-size-large: pxtorem(28);
+$font-size-small: pxtorem(12);
+$font-size-tiny: pxtorem(10);
+
+$font-size-h1: pxtorem(30);
+$font-size-h2: pxtorem(24);
+$font-size-h3: pxtorem(20);
+$font-size-h4: pxtorem(16);
+$font-size-h5: pxtorem(12);
+$font-size-h6: pxtorem(10);
+
+// A helper function that converts rem to px
+@function pxtorem($px, $rem: 16) {
+  @return ($px / $rem) +0rem;
+}
+
+$color: #ff0000;
+$error_color: #ff586b;
+$container_bg_opac: rgba(0, 0, 0, 0.25);
+$wide_bg_color: rgba(0, 0, 0, 0.7);
+$wide_bg_border_color: rgba(223, 229, 249, 0.2);
+$text_white: #fffefc;
+$primary: #1dc9dc;
+$gradient_bg: radial-gradient(circle, #38467a 0%, #212121 100%);
+$filter_text_color: #4a4a4a;
+$filter_border_color: rgba(223, 229, 249, 0.2);
+$outline_color: rgba(255, 254, 252, 0.75);
+$outline_disabled_color: #4e6682;
+$color_green: #1bbc9a;
+$ticker_active_background: rgba(255, 254, 252, 0.2);
+$dark_bg: #262833;
+$blue_anchor: #262833;
+$bar_text_color: #e0ebf7;
+$bar_percent_color: #535e86;
+$button_bg_color: #ffffff;

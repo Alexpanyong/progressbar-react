@@ -1,0 +1,140 @@
+/**
+  ** no padding, no margin: left to right
+  **/
+
+.padding-0 {
+  padding: 0;
+  &-l-r-0 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  &-l {
+    padding-left: 0;
+  }
+  &-r {
+    padding-right: 0;
+  }
+}
+
+.margin-0 {
+  margin: 0;
+  &-l-r {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  &-l {
+    margin-left: 0;
+  }
+  &-r {
+    margin-right: 0;
+  }
+}
+
+/**
+  ** displaying block and inline-block
+  **/
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+/**
+   colors
+  **/
+.purple {
+  color: #303458;
+}
+
+/**
+   font weights
+  **/
+.fw- {
+  &-extra-light {
+    font-weight: 200;
+  }
+  &-light {
+    font-weight: 300;
+  }
+  &-regular {
+    font-weight: 400;
+  }
+  &-semi-bold {
+    font-weight: 600;
+  }
+  &-bold {
+    font-weight: 700;
+  }
+  &-extra-bold {
+    font-weight: 800;
+  }
+  &-black {
+    font-weight: 900;
+  }
+}
+
+.fi {
+  font-style: italic;
+}
+
+/**
+  * remove outline in chrome
+  * @TODO: remove comment if you like to remove outline
+  *
+  * *:focus {
+  *  outline: none;
+  * }
+  */
+
+/**
+  ** margin and padding dynamic loops
+  **/
+@include dynamic-loop-by-10(mt, margin-top, 10);
+@include dynamic-loop-by-10(mb, margin-bottom, 10);
+@include dynamic-loop-by-10(ml, margin-left, 10);
+@include dynamic-loop-by-10(mr, margin-right, 10);
+
+@include dynamic-loop-by-10(pt, padding-top, 10);
+@include dynamic-loop-by-10(pb, padding-bottom, 10);
+@include dynamic-loop-by-10(pl, padding-left, 10);
+@include dynamic-loop-by-10(pr, padding-right, 10);
+/**
+  ** Font sizes
+  **/
+@include dynamic-loop(fs, font-size, 1, 9);
+@include dynamic-loop(fs, font-size, 2, 9);
+@include dynamic-loop(fs, font-size, 3, 0);
+@include dynamic-loop(fs, font-size, 7, 0);
+
+/**
+  ** Borders
+  **/
+.border-0 {
+  border: 0 !important;
+  &-l-r-0 {
+    border-left: 0 !important;
+    border-right: 0 !important;
+  }
+  &-l {
+    border-left: 0;
+  }
+  &-r {
+    border-right: 0;
+  }
+}
+
+/**
+   * Button wide and half
+   */
+.-wide {
+  width: 100%;
+}
+
+/**
+   * File label
+   */
+.custom-file-label {
+  overflow: hidden;
+}
